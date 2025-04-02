@@ -1,64 +1,59 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# PHP Development Environment with Docker
+This repository provides a basic environment for developers who want to use PHP with popular extensions, including support for Laravel development. The environment is set up with Docker and Docker Compose to simplify the development process.
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The project includes make commands that allows you to easily interact with the Docker containers, such as building the project or logging into the container.
 
-## About Laravel
+## Features
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+    - PHP 8.2 with common extensions
+    - MySQL 5.7 for database support
+    - NGINX as the web server
+    - Mailpit for local email testing
+    - Composer for dependency management 
+    - Easy Docker commands to manage the environment
+Environment
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    - Base OS: This project uses Debian-based Docker images (specifically php:8.2-fpm and nginx:latest), which are derived from official Debian distributions.
+    - PHP Version: PHP 8.2
+    - Web Server: NGINX
+    - Database: MySQL 5.7
+    - Package Manager: apt-get (Debian/Ubuntu-based)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Installed PHP Extensions
 
-## Learning Laravel
+    1. GD (for image processing)
+    2. PDO (for database interaction)
+    3. PDO MySQL (for MySQL database support)
+    4. ZIP (for handling zip files)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+These extensions are installed in the PHP container by default to support various PHP-based applications
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installed System Packages
 
-## Laravel Sponsors
+    - libfreetype6-dev: Required for GD with FreeType support
+    - libjpeg62-turbo-dev: Required for GD with JPEG support
+    - libpng-dev: Required for GD with PNG support
+    - libzip-dev: Required for ZIP support
+    - zip: For creating and extracting zip archives
+    - unzip: For extracting zip archives
+    - nano: A simple text editor for editing files inside the container
+    - default-mysql-client: MySQL client for interacting with MySQL databases
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Usage
 
-### Premium Partners
+1. Clone the repository:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```bash
+  git clone git@github.com:GerardProgrammeert/docker.git
+  cd docker
+```
 
-## Contributing
+2. Build and start the containers:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+    make up
+```
+3. Log in the php-fpm container as php user 
+```bash
+    make in
+```
