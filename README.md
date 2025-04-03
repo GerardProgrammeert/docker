@@ -1,23 +1,19 @@
 # PHP Development Environment with Docker
-This repository provides a basic environment for developers who want to use PHP with popular extensions, including support for Laravel development. The environment is set up with Docker and Docker Compose to simplify the development process.
+This repository provides a simple and efficient development environment for PHP, preconfigured with popular extensions. It leverages Docker and Docker Compose to streamline the setup and development process.
+Currently, this setup has been tested with Laravel 11. 
 
-The project includes make commands that allows you to easily interact with the Docker containers, such as building the project or logging into the container.
+The project includes make commands that simplify interaction with Docker containers, making it easy to build the project, log into containers, and perform other common tasks.
 
-## Features
-
-    - PHP 8.2 with common extensions
-    - MySQL 5.7 for database support
-    - NGINX as the web server
-    - Mailpit for local email testing
-    - Composer for dependency management 
-    - Easy Docker commands to manage the environment
-Environment
+## Environment
 
     - Base OS: This project uses Debian-based Docker images (specifically php:8.2-fpm and nginx:latest), which are derived from official Debian distributions.
     - PHP Version: PHP 8.2
     - Web Server: NGINX
     - Database: MySQL 5.7
     - Package Manager: apt-get (Debian/Ubuntu-based)
+    - NGINX as the web server
+    - Mailpit for local email testing
+    - Composer for dependency management
 
 ## Installed PHP Extensions
 
