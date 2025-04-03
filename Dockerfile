@@ -21,16 +21,10 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql zip
 
-# Set the working directory to /var/www
+# Set the working directory to /var/www/html
 WORKDIR /var/www/html
-
-# Expose port 9000 for PHP-FPM
-EXPOSE 9000
 
 # Add php user with specified UID to ensure matching file ownership between the WSL user
 ARG UID=1000
 RUN useradd -m -u $UID -s /bin/bash php
 USER php
-
-# Start PHP-FPM
-CMD ["php-fpm"]
